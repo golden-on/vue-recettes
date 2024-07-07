@@ -14,8 +14,8 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 
 export default defineComponent({
   setup() {
@@ -38,6 +38,7 @@ export default defineComponent({
     const addRecipe = () => {
       if (image.value) {
         const recipe = {
+          id: Date.now(),
           name: name.value,
           description: description.value,
           ingredients: ingredients.value.split(','),
@@ -62,3 +63,7 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped>
+/* Ajoutez votre style ici */
+</style>

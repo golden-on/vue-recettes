@@ -1,5 +1,4 @@
-import type { InjectionKey } from 'vue'
-import { createStore, Store } from 'vuex'
+import { createStore } from 'vuex'
 
 interface Recipe {
   id: number
@@ -11,16 +10,18 @@ interface Recipe {
   done: boolean
 }
 
-// Déclarez l'état de store
-interface State {
-  recipes: Recipe[]
+const loadRecipes = (): Recipe[] => {
+  const recipes = localStorage.getItem('recipes')
+  return recipes ? JSON.parse(recipes) : []
 }
 
-export const key: InjectionKey<Store<State>> = Symbol()
+const saveRecipes = (recipes: Recipe[]) => {
+  localStorage.setItem('recipes', JSON.stringify(recipes))
+}
 
-export const store = createStore<State>({
+export default createStore({
   state: {
-    recipes: []
+    recipes: loadRecipes()
   },
   mutations: {
     addRecipe(state, recipe: Recipe) {
@@ -33,14 +34,3 @@ export const store = createStore<State>({
     }
   }
 })
-
-// Fonction de persistance de l'état
-const saveRecipes = (recipes: Recipe[]) => {
-  localStorage.setItem('recipes', JSON.stringify(recipes))
-}
-
-// Fonction de chargement des recettes depuis localStorage
-const loadRecipes = (): Recipe[] => {
-  const recipes = localStorage.getItem('recipes')
-  return recipes ? JSON.parse(recipes) : []
-}
