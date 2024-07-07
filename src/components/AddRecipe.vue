@@ -27,23 +27,30 @@ export default defineComponent({
     const ingredients = ref('')
     const instructions = ref('')
     const image = ref<File | null>(null)
+    const imageBase64 = ref<string | null>(null)
 
+    // convert the image to Base64 for persistence needs
     const handleFileUpload = (event: Event) => {
       const target = event.target as HTMLInputElement
-      if (target.files) {
+      if (target.files && target.files[0]) {
+        const reader = new FileReader()
+        reader.onload = (e) => {
+          imageBase64.value = e.target?.result as string
+        }
+        reader.readAsDataURL(target.files[0]) // Read the file as a data URL (Base64)
         image.value = target.files[0]
       }
     }
 
     const addRecipe = () => {
-      if (image.value) {
+      if (image.value && imageBase64.value) {
         const recipe = {
           id: Date.now(),
           name: name.value,
           description: description.value,
           ingredients: ingredients.value.split(','),
           instructions: instructions.value,
-          image: URL.createObjectURL(image.value),
+          image: imageBase64.value,
           done: false
         }
         store.commit('addRecipe', recipe)
@@ -57,6 +64,7 @@ export default defineComponent({
       ingredients,
       instructions,
       image,
+      imageBase64, // Make sure to return this so it's available in the template if needed
       handleFileUpload,
       addRecipe
     }
