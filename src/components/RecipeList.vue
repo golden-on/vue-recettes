@@ -20,14 +20,20 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useStore } from 'vuex'
-import { mapState, mapMutations } from 'vuex'
+import { State } from '../store'
 
 export default defineComponent({
-  computed: {
-    ...mapState(['recipes'])
-  },
-  methods: {
-    ...mapMutations(['toggleRecipeStatus'])
+  setup() {
+    const store = useStore<State>()
+
+    const toggleStatus = (recipe: any) => {
+      store.commit('toggleRecipeStatus', recipe)
+    }
+
+    return {
+      recipes: store.state.recipes,
+      toggleStatus
+    }
   }
 })
 </script>
