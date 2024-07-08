@@ -4,7 +4,7 @@
     <StatusFilter :filterStatus="filterStatus" @update:filter="updateFilter" />
     <ul class="grid grid-cols-3 gap-4">
       <li
-        v-for="recipe in filteredRecipes"
+        v-for="recipe in paginatedRecipes"
         :key="recipe.id"
         class="border p-4 rounded-md shadow-md flex flex-col h-full"
         @click="showRecipeModal(recipe)"
@@ -31,7 +31,7 @@
             @click.stop="toggleStatus(recipe)"
             class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
           >
-            {{ recipe.done ? 'Réalisée' : 'En attente' }}
+            {{ recipe.done ? 'En attente' : 'Réalisée' }}
           </button>
           <span
             @click="showRecipeModal(recipe)"
@@ -42,6 +42,11 @@
         </div>
       </li>
     </ul>
+    <Pagination
+      :currentPage="currentPage"
+      :maxPages="maxPages"
+      @update:currentPage="updateCurrentPage"
+    />
     <router-link to="/add-recipe" class="block mt-6 text-blue-500 hover:underline"
       >Ajouter une nouvelle recette</router-link
     >
@@ -55,17 +60,21 @@ import StatusFilter from '@/components/StatusFilter.vue'
 import axios from 'axios'
 import { computed, defineComponent, ref } from 'vue'
 import { useStore } from 'vuex'
+import Pagination from '../components/Pagination/Pagination.vue'
 
 export default defineComponent({
   components: {
     StatusFilter,
-    RecipeModal
+    RecipeModal,
+    Pagination
   },
   setup() {
     const store = useStore()
     const filterStatus = ref('all')
     const showModal = ref(false)
     const selectedRecipe = ref(null)
+    const currentPage = ref(1)
+    const pageSize = ref(6)
 
     const filteredRecipes = computed(() => {
       if (filterStatus.value === 'all') return store.state.recipes
@@ -84,6 +93,17 @@ export default defineComponent({
       selectedRecipe.value = recipe
       showModal.value = true
     }
+
+    const maxPages = computed(() => Math.ceil(filteredRecipes.value.length / pageSize.value))
+    const updateCurrentPage = (page: number) => {
+      currentPage.value = page
+    }
+
+    const paginatedRecipes = computed(() => {
+      const start = (currentPage.value - 1) * pageSize.value
+      const end = start + pageSize.value
+      return filteredRecipes.value.slice(start, end)
+    })
 
     // Fetch recipes
     const fetchRecipes = async () => {
@@ -106,9 +126,13 @@ export default defineComponent({
       filteredRecipes,
       selectedRecipe,
       showModal,
+      maxPages,
+      currentPage,
+      paginatedRecipes,
       toggleStatus,
       updateFilter,
-      showRecipeModal
+      showRecipeModal,
+      updateCurrentPage
     }
   }
 })
