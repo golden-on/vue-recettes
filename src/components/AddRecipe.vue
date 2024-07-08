@@ -74,9 +74,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { useStore } from 'vuex';
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 
 const store = useStore()
 const router = useRouter()
@@ -142,3 +142,4 @@ const addRecipe = () => {
     router.push('/')
   }
 }
+</script>

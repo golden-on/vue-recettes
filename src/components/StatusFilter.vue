@@ -31,7 +31,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineEmits, defineProps } from 'vue'
 import filter from '../assets/logos/filtre.png'
 import FilterButton from './FilterButton.vue'
 
