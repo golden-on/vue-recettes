@@ -25,8 +25,11 @@ export default createStore({
   },
   mutations: {
     addRecipe(state, recipe: Recipe) {
-      state.recipes.push(recipe)
-      saveRecipes(state.recipes)
+      const existingRecipe = state.recipes.find((r) => r.id === recipe.id)
+      if (!existingRecipe) {
+        state.recipes.push(recipe)
+        saveRecipes(state.recipes)
+      }
     },
     toggleRecipeStatus(state, recipe: Recipe) {
       recipe.done = !recipe.done
