@@ -1,7 +1,8 @@
 [
   {
     "id": 1,
-    "title": "Classic Pancakes",
+    "name": "Classic Pancakes",
+    "description": "Delicious and fluffy pancakes that are perfect for breakfast.",
     "ingredients": [
       "2 cups all-purpose flour",
       "2 tablespoons sugar",
@@ -20,11 +21,12 @@
       "Brown on both sides and serve hot."
     ],
     "done": false,
-    "image": "path/to/pancakes.jpg"
+    "image": "../src/assets/image/pizza.png"
   },
   {
     "id": 2,
-    "title": "Spaghetti Carbonara",
+    "name": "Spaghetti Carbonara",
+    "description": "A classic Italian pasta dish with pancetta, eggs, and parmesan cheese.",
     "ingredients": [
       "400g spaghetti",
       "150g pancetta",
@@ -41,11 +43,12 @@
       "Season with salt and pepper to taste."
     ],
     "done": false,
-    "image": "path/to/spaghetti.jpg"
+    "image": "../src/assets/image/pizza.png"
   },
   {
     "id": 3,
-    "title": "Vegetable Stir Fry",
+    "name": "Vegetable Stir Fry",
+    "description": "A quick and healthy stir fry with mixed vegetables and a savory sauce.",
     "ingredients": [
       "2 tablespoons vegetable oil",
       "2 cups mixed vegetables (broccoli, bell pepper, carrot, snap peas)",
@@ -63,6 +66,213 @@
       "Serve with rice."
     ],
     "done": false,
-    "image": "path/to/stir-fry.jpg"
+    "image": "../src/assets/image/pizza.png"
+  },
+  {
+    "id": 4,
+    "name": "Classic Pancakes",
+    "description": "Delicious and fluffy pancakes that are perfect for breakfast.",
+    "ingredients": [
+      "2 cups all-purpose flour",
+      "2 tablespoons sugar",
+      "2 teaspoons baking powder",
+      "1 teaspoon baking soda",
+      "2 cups milk",
+      "2 eggs",
+      "4 tablespoons melted butter"
+    ],
+    "instructions": [
+      "In a large bowl, mix together the dry ingredients.",
+      "In another bowl, beat the eggs into the milk, then stir in the melted butter.",
+      "Combine the wet and dry ingredients to make a batter.",
+      "Heat a lightly oiled griddle or frying pan over medium-high heat.",
+      "Pour or scoop the batter onto the griddle, using approximately 1/4 cup for each pancake.",
+      "Brown on both sides and serve hot."
+    ],
+    "done": false,
+    "image": "../src/assets/image/pizza.png"
+  },
+  {
+    "id": 5,
+    "name": "Spaghetti Carbonara",
+    "description": "A classic Italian pasta dish with pancetta, eggs, and parmesan cheese.",
+    "ingredients": [
+      "400g spaghetti",
+      "150g pancetta",
+      "2 large eggs",
+      "100g parmesan cheese",
+      "Black pepper",
+      "Salt"
+    ],
+    "instructions": [
+      "Cook the spaghetti according to the package instructions.",
+      "Fry the pancetta until it is crispy.",
+      "Beat the eggs and mix with grated parmesan cheese.",
+      "Combine the spaghetti, pancetta, and egg mixture.",
+      "Season with salt and pepper to taste."
+    ],
+    "done": false,
+    "image": "../src/assets/image/pizza.png"
+  },
+  {
+    "id": 6,
+    "name": "Vegetable Stir Fry",
+    "description": "A quick and healthy stir fry with mixed vegetables and a savory sauce.",
+    "ingredients": [
+      "2 tablespoons vegetable oil",
+      "2 cups mixed vegetables (broccoli, bell pepper, carrot, snap peas)",
+      "2 tablespoons soy sauce",
+      "1 tablespoon oyster sauce",
+      "1 teaspoon cornstarch",
+      "1/2 cup water",
+      "Rice, to serve"
+    ],
+    "instructions": [
+      "Heat the oil in a large skillet over medium-high heat.",
+      "Add the vegetables and stir-fry until tender.",
+      "Mix the soy sauce, oyster sauce, cornstarch, and water in a bowl.",
+      "Pour over the vegetables and cook until the sauce has thickened.",
+      "Serve with rice."
+    ],
+    "done": false,
+    "image": "../src/assets/image/pizza.png"
+  },
+  {
+    "id": 7,
+    "name": "Classic Pancakes",
+    "description": "Delicious and fluffy pancakes that are perfect for breakfast.",
+    "ingredients": [
+      "2 cups all-purpose flour",
+      "2 tablespoons sugar",
+      "2 teaspoons baking powder",
+      "1 teaspoon baking soda",
+      "2 cups milk",
+      "2 eggs",
+      "4 tablespoons melted butter"
+    ],
+    "instructions": [
+      "In a large bowl, mix together the dry ingredients.",
+      "In another bowl, beat the eggs into the milk, then stir in the melted butter.",
+      "Combine the wet and dry ingredients to make a batter.",
+      "Heat a lightly oiled griddle or frying pan over medium-high heat.",
+      "Pour or scoop the batter onto the griddle, using approximately 1/4 cup for each pancake.",
+      "Brown on both sides and serve hot."
+    ],
+    "done": false,
+    "image": "../src/assets/image/pizza.png"
+  },
+  {
+    "id": 8,
+    "name": "Spaghetti Carbonara",
+    "description": "A classic Italian pasta dish with pancetta, eggs, and parmesan cheese.",
+    "ingredients": [
+      "400g spaghetti",
+      "150g pancetta",
+      "2 large eggs",
+      "100g parmesan cheese",
+      "Black pepper",
+      "Salt"
+    ],
+    "instructions": [
+      "Cook the spaghetti according to the package instructions.",
+      "Fry the pancetta until it is crispy.",
+      "Beat the eggs and mix with grated parmesan cheese.",
+      "Combine the spaghetti, pancetta, and egg mixture.",
+      "Season with salt and pepper to taste."
+    ],
+    "done": false,
+    "image": "../src/assets/image/pizza.png"
+  },
+  {
+    "id": 9,
+    "name": "Vegetable Stir Fry",
+    "description": "A quick and healthy stir fry with mixed vegetables and a savory sauce.",
+    "ingredients": [
+      "2 tablespoons vegetable oil",
+      "2 cups mixed vegetables (broccoli, bell pepper, carrot, snap peas)",
+      "2 tablespoons soy sauce",
+      "1 tablespoon oyster sauce",
+      "1 teaspoon cornstarch",
+      "1/2 cup water",
+      "Rice, to serve"
+    ],
+    "instructions": [
+      "Heat the oil in a large skillet over medium-high heat.",
+      "Add the vegetables and stir-fry until tender.",
+      "Mix the soy sauce, oyster sauce, cornstarch, and water in a bowl.",
+      "Pour over the vegetables and cook until the sauce has thickened.",
+      "Serve with rice."
+    ],
+    "done": false,
+    "image": "../src/assets/image/pizza.png"
+  },
+  {
+    "id": 10,
+    "name": "Classic Pancakes",
+    "description": "Delicious and fluffy pancakes that are perfect for breakfast.",
+    "ingredients": [
+      "2 cups all-purpose flour",
+      "2 tablespoons sugar",
+      "2 teaspoons baking powder",
+      "1 teaspoon baking soda",
+      "2 cups milk",
+      "2 eggs",
+      "4 tablespoons melted butter"
+    ],
+    "instructions": [
+      "In a large bowl, mix together the dry ingredients.",
+      "In another bowl, beat the eggs into the milk, then stir in the melted butter.",
+      "Combine the wet and dry ingredients to make a batter.",
+      "Heat a lightly oiled griddle or frying pan over medium-high heat.",
+      "Pour or scoop the batter onto the griddle, using approximately 1/4 cup for each pancake.",
+      "Brown on both sides and serve hot."
+    ],
+    "done": false,
+    "image": "../src/assets/image/pizza.png"
+  },
+  {
+    "id": 10,
+    "name": "Spaghetti Carbonara",
+    "description": "A classic Italian pasta dish with pancetta, eggs, and parmesan cheese.",
+    "ingredients": [
+      "400g spaghetti",
+      "150g pancetta",
+      "2 large eggs",
+      "100g parmesan cheese",
+      "Black pepper",
+      "Salt"
+    ],
+    "instructions": [
+      "Cook the spaghetti according to the package instructions.",
+      "Fry the pancetta until it is crispy.",
+      "Beat the eggs and mix with grated parmesan cheese.",
+      "Combine the spaghetti, pancetta, and egg mixture.",
+      "Season with salt and pepper to taste."
+    ],
+    "done": false,
+    "image": "../src/assets/image/pizza.png"
+  },
+  {
+    "id": 11,
+    "name": "Vegetable Stir Fry",
+    "description": "A quick and healthy stir fry with mixed vegetables and a savory sauce.",
+    "ingredients": [
+      "2 tablespoons vegetable oil",
+      "2 cups mixed vegetables (broccoli, bell pepper, carrot, snap peas)",
+      "2 tablespoons soy sauce",
+      "1 tablespoon oyster sauce",
+      "1 teaspoon cornstarch",
+      "1/2 cup water",
+      "Rice, to serve"
+    ],
+    "instructions": [
+      "Heat the oil in a large skillet over medium-high heat.",
+      "Add the vegetables and stir-fry until tender.",
+      "Mix the soy sauce, oyster sauce, cornstarch, and water in a bowl.",
+      "Pour over the vegetables and cook until the sauce has thickened.",
+      "Serve with rice."
+    ],
+    "done": false,
+    "image": "../src/assets/image/pizza.png"
   }
 ]
