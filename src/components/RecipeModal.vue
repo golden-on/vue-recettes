@@ -3,10 +3,10 @@
     class="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center overflow-y-auto"
     v-if="isVisible"
   >
-    <div class="bg-white p-6 rounded-md shadow-lg max-w-md w-full m-4 relative">
+    <div class="bg-white p-6 rounded-md shadow-lg max-w-3xl w-full m-4 relative h-auto">
       <span class="absolute top-0 right-2 text-2xl cursor-pointer" @click="close">&times;</span>
       <div class="mb-4 pt-3">
-        <img :src="recipe.image" alt="Recipe Image" class="w-full h-40 rounded-lg mb-4" />
+        <img :src="recipe.image" alt="Recipe Image" class="w-1/2 h-40 rounded-lg mb-4 mx-auto" />
         <h2 class="text-2xl font-bold mb-2">{{ recipe.name }}</h2>
         <p class="mb-4">{{ recipe.description }}</p>
         <h3 class="font-semibold mb-4">Instructions:</h3>
