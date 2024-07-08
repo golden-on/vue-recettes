@@ -1,11 +1,11 @@
 <template>
   <div
-    class="mb-4"
+    class="mb-4 flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4"
     style="text-align: center; display: flex; column-gap: 10px; justify-content: center"
   >
-    <div class="flex justify-center items-center">
-      <img :src="filter" alt="Image de la recette" />
-      <label class="block">Filter by:</label>
+    <div class="flex justify-center items-center gap-2">
+      <img :src="filter" alt="Image de la recette" class="w-6 h-6 sm:w-8 sm:h-8" />
+      <label class="block text-sm sm:text-base">Filter by:</label>
     </div>
     <div class="flex justify-center">
       <FilterButton

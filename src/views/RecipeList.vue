@@ -1,41 +1,42 @@
 <template>
-  <div class="p-6">
-    <h1 class="text-2xl font-bold mb-4">Liste des Recettes</h1>
+  <div class="p-4 md:p-6">
+    <h1 class="text-xl md:text-2xl font-bold mb-4">Liste des Recettes</h1>
     <StatusFilter :filterStatus="filterStatus" @update:filter="updateFilter" />
-    <ul class="grid grid-cols-3 gap-4">
+    <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       <li
         v-for="recipe in paginatedRecipes"
         :key="recipe.id"
         class="border p-4 rounded-md shadow-md flex flex-col h-full"
         @click="showRecipeModal(recipe)"
       >
-        <h2 class="text-xl font-semibold">{{ recipe.name }}</h2>
-        <p>{{ recipe.description }}</p>
+        <h2 class="text-lg md:text-xl font-semibold">{{ recipe.name }}</h2>
+        <p class="text-sm md:text-base">{{ recipe.description }}</p>
         <img
           :src="recipe.image"
           alt="Image de la recette"
-          class="w-full h-40 mt-2"
+          class="w-full mt-2"
+          style="height: 200px; object-fit: cover"
           loading="lazy"
         />
-        <h3 class="font-semibold">Ingredients:</h3>
-        <div class="flex flex-wrap mt-3">
+        <h3 class="font-semibold mt-2">Ingredients:</h3>
+        <div class="flex flex-wrap mt-1">
           <span
             v-for="ingredient in recipe.ingredients"
             :key="ingredient"
-            class="bg-gray-200 px-2 py-1 rounded-full mr-2 mb-2"
+            class="bg-gray-200 px-2 py-1 rounded-full mr-2 mb-2 text-xs md:text-sm"
             >{{ ingredient }}</span
           >
         </div>
-        <div class="mt-auto pt-6 flex justify-between">
+        <div class="mt-auto pt-4 flex justify-between items-center">
           <button
             @click.stop="toggleStatus(recipe)"
-            class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+            class="px-3 py-1 md:px-4 md:py-2 bg-blue-500 text-white rounded hover:bg-blue-700 text-xs md:text-sm"
           >
             {{ recipe.done ? 'En attente' : 'Réalisée' }}
           </button>
           <span
             @click="showRecipeModal(recipe)"
-            class="text-blue-500 cursor-pointer hover:underline ml-2 self-end"
+            class="text-blue-500 cursor-pointer hover:underline text-xs md:text-sm self-end"
           >
             see instructions...
           </span>
@@ -47,7 +48,9 @@
       :maxPages="maxPages"
       @update:currentPage="updateCurrentPage"
     />
-    <router-link to="/add-recipe" class="block mt-6 text-blue-500 hover:underline"
+    <router-link
+      to="/add-recipe"
+      class="block mt-4 text-blue-500 hover:underline text-sm md:text-base"
       >Ajouter une nouvelle recette</router-link
     >
   </div>

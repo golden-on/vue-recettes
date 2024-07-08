@@ -1,10 +1,13 @@
 <template>
-  <div class="flex justify-center items-center">
-    <router-link to="/" class="block text-blue-500 hover:underline absolute top-0 left-0 m-4">
+  <div class="flex flex-col md:flex-row justify-center items-center p-4 md:p-8">
+    <router-link
+      to="/"
+      class="text-blue-500 hover:underline mb-4 md:absolute md:top-0 md:left-0 m-4"
+    >
       <button class="bg-blue-500 text-white px-4 py-2 rounded">Back</button>
     </router-link>
-    <div class="bg-white p-8 rounded shadow">
-      <h1 class="text-2xl font-bold mb-4">Ajouter une Nouvelle Recette</h1>
+    <div class="bg-white p-4 md:p-8 rounded shadow w-full max-w-4xl">
+      <h1 class="text-xl md:text-2xl font-bold mb-4">Ajouter une Nouvelle Recette</h1>
       <form @submit.prevent="addRecipe" class="space-y-4">
         <label class="flex flex-col">
           Nom :

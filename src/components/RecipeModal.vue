@@ -3,7 +3,9 @@
     class="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center overflow-y-auto"
     v-if="props.isVisible"
   >
-    <div class="bg-white p-6 rounded-md shadow-lg max-w-3xl w-full m-4 relative h-auto">
+    <div
+      class="bg-white p-4 md:p-6 rounded-md shadow-lg max-w-full sm:max-w-md md:max-w-2xl w-full m-4 relative"
+    >
       <span class="absolute top-0 right-2 text-2xl cursor-pointer" @click="close">&times;</span>
       <div class="mb-4 pt-3">
         <img
