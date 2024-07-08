@@ -10,18 +10,18 @@
     <div class="flex justify-center">
       <FilterButton
         label="Toutes"
-        :currentStatus="filterStatus"
+        :currentStatus="props.filterStatus"
         statusValue="all"
         :roundedLeft="true"
         @update:filter="updateFilter"
       /><FilterButton
         label="Réalisées"
-        :currentStatus="filterStatus"
+        :currentStatus="props.filterStatus"
         statusValue="done"
         @update:filter="updateFilter"
       /><FilterButton
         label="En attente"
-        :currentStatus="filterStatus"
+        :currentStatus="props.filterStatus"
         statusValue="pending"
         :roundedRight="true"
         @update:filter="updateFilter"
@@ -30,28 +30,18 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
+import { defineEmits, defineProps } from 'vue'
 import filter from '../assets/logos/filtre.png'
 import FilterButton from './FilterButton.vue'
 
-export default defineComponent({
-  components: {
-    FilterButton
-  },
-  name: 'StatusFilter',
-  props: {
-    filterStatus: String
-  },
-  data() {
-    return {
-      filter
-    }
-  },
-  methods: {
-    updateFilter(status: string) {
-      this.$emit('update:filter', status)
-    }
-  }
-})
+const props = defineProps<{
+  filterStatus: string
+}>()
+
+const emit = defineEmits(['update:filter'])
+
+const updateFilter = (status: string) => {
+  emit('update:filter', status)
+}
 </script>

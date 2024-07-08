@@ -73,90 +73,72 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { useStore } from 'vuex'
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
 
-export default defineComponent({
-  setup() {
-    const store = useStore()
-    const router = useRouter()
+const store = useStore()
+const router = useRouter()
 
-    const name = ref('')
-    const description = ref('')
-    const instructions = ref<string[]>([])
-    const selectedIngredients = ref([])
-    const image = ref<File | null>(null)
-    const imageBase64 = ref<string | null>(null)
-    const ingredients = ref([
-      'Tomatoes',
-      'Cheese',
-      'Pepperoni',
-      'Olives',
-      'Mushrooms',
-      'Peppers',
-      'Onions',
-      'Sausage',
-      'Bacon',
-      'Ham',
-      'Pineapple',
-      'Spinach',
-      'Garlic',
-      'Chicken',
-      'Beef',
-      'Broccoli',
-      'Corn',
-      'Jalapenos',
-      'Anchovies',
-      'Tuna'
-    ])
+const name = ref('')
+const description = ref('')
+const instructions = ref<string[]>([])
+const selectedIngredients = ref([])
+const image = ref<File | null>(null)
+const imageBase64 = ref<string | null>(null)
+const ingredients = ref([
+  'Tomatoes',
+  'Cheese',
+  'Pepperoni',
+  'Olives',
+  'Mushrooms',
+  'Peppers',
+  'Onions',
+  'Sausage',
+  'Bacon',
+  'Ham',
+  'Pineapple',
+  'Spinach',
+  'Garlic',
+  'Chicken',
+  'Beef',
+  'Broccoli',
+  'Corn',
+  'Jalapenos',
+  'Anchovies',
+  'Tuna'
+])
 
-    const handleFileUpload = (event: Event) => {
-      const target = event.target as HTMLInputElement
-      if (target.files && target.files[0]) {
-        const reader = new FileReader()
-        reader.onload = (e) => {
-          imageBase64.value = e.target?.result as string
-        }
-        reader.readAsDataURL(target.files[0])
-        image.value = target.files[0]
-      }
+const handleFileUpload = (event: Event) => {
+  const target = event.target as HTMLInputElement
+  if (target.files && target.files[0]) {
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      imageBase64.value = e.target?.result as string
     }
-
-    // Adds a new empty step to the instructions array
-    const addStep = () => {
-      instructions.value.push('')
-    }
-
-    const addRecipe = () => {
-      if (image.value && imageBase64.value) {
-        const recipe = {
-          id: Date.now(),
-          name: name.value,
-          description: description.value,
-          ingredients: ingredients.value,
-          instructions: instructions.value,
-          image: imageBase64.value,
-          done: false
-        }
-        store.commit('addRecipe', recipe)
-        router.push('/')
-      }
-    }
-
-    return {
-      name,
-      description,
-      ingredients,
-      selectedIngredients,
-      instructions,
-      image,
-      imageBase64,
-      handleFileUpload,
-      addStep,
-      addRecipe
-    }
+    reader.readAsDataURL(target.files[0])
+    image.value = target.files[0]
   }
-})
-</script>
+}
+
+// Adds a new empty step to the instructions array
+const addStep = () => {
+  instructions.value.push('')
+}
+
+const addRecipe = () => {
+  if (image.value && imageBase64.value) {
+    const recipe = {
+      id: Date.now(),
+      name: name.value,
+      description: description.value,
+      ingredients: selectedIngredients.value,
+      instructions: instructions.value,
+      image: imageBase64.value,
+      done: false
+    }
+    store.commit('addRecipe', recipe)
+    router.push('/')
+  }
+}

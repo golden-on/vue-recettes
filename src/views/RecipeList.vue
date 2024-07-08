@@ -54,86 +54,61 @@
   <RecipeModal :recipe="selectedRecipe" v-model:isVisible="showModal"></RecipeModal>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import RecipeModal from '@/components/RecipeModal.vue'
 import StatusFilter from '@/components/StatusFilter.vue'
 import axios from 'axios'
-import { computed, defineComponent, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useStore } from 'vuex'
 import Pagination from '../components/Pagination/Pagination.vue'
 
-export default defineComponent({
-  components: {
-    StatusFilter,
-    RecipeModal,
-    Pagination
-  },
-  setup() {
-    const store = useStore()
-    const filterStatus = ref('all')
-    const showModal = ref(false)
-    const selectedRecipe = ref(null)
-    const currentPage = ref(1)
-    const pageSize = ref(6)
+const store = useStore()
+const filterStatus = ref('all')
+const showModal = ref(false)
+const selectedRecipe = ref(null)
+const currentPage = ref(1)
+const pageSize = ref(6)
 
-    const filteredRecipes = computed(() => {
-      if (filterStatus.value === 'all') return store.state.recipes
-      return store.state.recipes.filter(
-        (recipe: any) => recipe.done === (filterStatus.value === 'done')
-      )
-    })
-
-    const toggleStatus = (recipe: any) => {
-      store.commit('toggleRecipeStatus', recipe)
-    }
-    const updateFilter = (status: any) => {
-      filterStatus.value = status
-    }
-    const showRecipeModal = (recipe: any) => {
-      selectedRecipe.value = recipe
-      showModal.value = true
-    }
-
-    const maxPages = computed(() => Math.ceil(filteredRecipes.value.length / pageSize.value))
-    const updateCurrentPage = (page: number) => {
-      currentPage.value = page
-    }
-
-    const paginatedRecipes = computed(() => {
-      const start = (currentPage.value - 1) * pageSize.value
-      const end = start + pageSize.value
-      return filteredRecipes.value.slice(start, end)
-    })
-
-    // Fetch recipes
-    const fetchRecipes = async () => {
-      try {
-        const response = await axios.get('data/Recipes.json')
-        console.log('Recipes data:', response.data) // Corrected log message
-        response.data.forEach((recipe: any) => {
-          store.commit('addRecipe', recipe)
-        })
-      } catch (error) {
-        console.error('Failed to load recipes:', error)
-      }
-    }
-
-    // Call fetchRecipes on component setup
-    fetchRecipes()
-
-    return {
-      filterStatus,
-      filteredRecipes,
-      selectedRecipe,
-      showModal,
-      maxPages,
-      currentPage,
-      paginatedRecipes,
-      toggleStatus,
-      updateFilter,
-      showRecipeModal,
-      updateCurrentPage
-    }
-  }
+const filteredRecipes = computed(() => {
+  if (filterStatus.value === 'all') return store.state.recipes
+  return store.state.recipes.filter(
+    (recipe: any) => recipe.done === (filterStatus.value === 'done')
+  )
 })
+
+const toggleStatus = (recipe: any) => {
+  store.commit('toggleRecipeStatus', recipe)
+}
+const updateFilter = (status: any) => {
+  filterStatus.value = status
+}
+const showRecipeModal = (recipe: any) => {
+  selectedRecipe.value = recipe
+  showModal.value = true
+}
+
+const maxPages = computed(() => Math.ceil(filteredRecipes.value.length / pageSize.value))
+const updateCurrentPage = (page: number) => {
+  currentPage.value = page
+}
+
+const paginatedRecipes = computed(() => {
+  const start = (currentPage.value - 1) * pageSize.value
+  const end = start + pageSize.value
+  return filteredRecipes.value.slice(start, end)
+})
+
+const fetchRecipes = async () => {
+  try {
+    const response = await axios.get('data/Recipes.json')
+    console.log('Recipes data:', response.data) // Corrected log message
+    response.data.forEach((recipe: any) => {
+      store.commit('addRecipe', recipe)
+    })
+  } catch (error) {
+    console.error('Failed to load recipes:', error)
+  }
+}
+
+onMounted(fetchRecipes)
 </script>

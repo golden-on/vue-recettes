@@ -1,26 +1,26 @@
 <template>
   <button
     :class="{
-      'bg-blue-500 text-white': currentStatus === statusValue,
-      'bg-gray-300 text-gray-700': currentStatus !== statusValue,
-      'rounded-l-md': roundedLeft,
-      'rounded-r-md': roundedRight
+      'bg-blue-500 text-white': props.currentStatus === statusValue,
+      'bg-gray-300 text-gray-700': props.currentStatus !== statusValue,
+      'rounded-l-md': props.roundedLeft,
+      'rounded-r-md': props.roundedRight
     }"
     class="border p-2"
-    @click="$emit('update:filter', statusValue)"
+    @click="$emit('update:filter', props.statusValue)"
   >
-    {{ label }}
+    {{ props.label }}
   </button>
 </template>
 
-<script>
-export default {
-  props: {
-    label: String,
-    currentStatus: String,
-    statusValue: String,
-    roundedLeft: Boolean,
-    roundedRight: Boolean
-  }
-}
+<script setup lang="ts">
+import { defineProps } from 'vue'
+
+const props = defineProps<{
+  label: string
+  currentStatus: string
+  statusValue: string
+  roundedLeft: boolean
+  roundedRight: boolean
+}>()
 </script>
